@@ -1,0 +1,9 @@
+baseURL = "http://example.org/"
+disablePathToLower = true
+languageCode = "en-us"
+title = "vanhuyz's notes"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
