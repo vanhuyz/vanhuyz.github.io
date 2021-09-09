@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Japanese on vanhuyz's notes</title><link>http://example.org/categories/Japanese/</link><description>Recent content in Japanese on vanhuyz's notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Mar 2019 11:31:59 +0000</lastBuildDate><atom:link href="http://example.org/categories/Japanese/index.xml" rel="self" type="application/rss+xml"/><item><title>自然言語処理の国際学会 ACL2018 @メルボルンに参加してきました！</title><link>http://example.org/post/acl-2018-report/</link><pubDate>Wed, 06 Mar 2019 11:31:59 +0000</pubDate><guid>http://example.org/post/acl-2018-report/</guid><description>7月10日~15日 で オーストラリアのメルボルンで開催されました 56th Annual Meeting of the Association for Computational Linguistics (ACL2018) に参加してきました。
+経緯 ACL は一言で言うと「自然言語処理の世界トップコンファレンス」です。
+私は最先端の対話システムはどうなっているのか気になって参加にいきました。今回はトップコンファレンス初参加です。
+ACL の日程と構成 日程は以下のと通りです。
+7/15 (日) チュートリアル 7/16 (月) ~ 7/18 (水) メインカンファレンス 7/19 (木) ~ 7/20 (金) ワークショップ
+メインカンファレンスは Long Papers, Short Papers, Posters に分かれています。たくさんのセッションがありますが、私は以下のセッションが気になります。
+Question Answering (質問応答） Dialog System (対話システム） Generation (文章生成） Machine Translation (機械翻訳) Summarization (機械要約） Vision (ビジョン) Machine Learning (機械学習) 自然言語処理学会なのに Vision というセッションがあって面白いですね。最近、言語 x 画像 というハイブリッド的な研究が結構増えているようです。
+印象に残ったセッションと感想など 初日（7月10日）はチュートリアルの日です。私が対話と強化学習関連の２つチュートリアルを聴講しました。</description></item><item><title>エンジニアのための情報収集の話</title><link>http://example.org/post/information-gathering-for-engineers/</link><pubDate>Thu, 02 Feb 2017 18:43:00 +0000</pubDate><guid>http://example.org/post/information-gathering-for-engineers/</guid><description>ITエンジニアにとって情報収集は大事！どうやって効率的に集めるのか会社で発表しました！</description></item><item><title>AnacondaによるTensorFlowインストール手順</title><link>http://example.org/post/install-tensorflow-with-anaconda/</link><pubDate>Mon, 16 Jan 2017 06:28:00 +0000</pubDate><guid>http://example.org/post/install-tensorflow-with-anaconda/</guid><description>Anacondaによるインストールは大変楽という噂がありますので試してみました。 AnacondaはデフォルトNumPy、 Pandas、 SciPy、 Matplotlib、 Jupyterなどが入っています。 他のパッケージ、例えばTensorFlow、 OpenCVも簡単にインストールでき、pyenv/virtualenvがいらなくなるのでおすすめです。
+環境: Ubuntu 16.04 Anacondaインストール スクリプトダウンロード URL変える可能性があるのでまずHP確認してください。 https://www.continuum.io/downloads#linux $ wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh スクリプト実行 $ bash Anaconda3-4.2.0-Linux-x86_64.sh $ source ~/.bashrc TensorFlowインストール 詳細はこちら https://www.tensorflow.org/get_started/os_setup#anaconda_installation
+$ conda create -n tensorflow python=3.5 condaコマンドでインストールできるのは現在CPUバージョンだけです。GPUインストールしたい場合はpipでインストールしてください。
+$ source activate tensorflow $ conda install -c conda-forge tensorflow 確認：
+$ python Python 3.5.2 |Continuum Analytics, Inc.| (default, Jul 2 2016, 17:53:06) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux Type &amp;#34;help&amp;#34;, &amp;#34;copyright&amp;#34;, &amp;#34;credits&amp;#34; or &amp;#34;license&amp;#34; for more information.</description></item><item><title>最尤推定は何ができるの？</title><link>http://example.org/post/maximum-likelihood-examples/</link><pubDate>Tue, 20 Dec 2016 06:51:00 +0000</pubDate><guid>http://example.org/post/maximum-likelihood-examples/</guid><description>英語: Maximum Likelihood Estimation (MLE)
+最近仕事で確率モデルを扱う機会があって、パラメータ推定には最尤推定を使うことがありました。 でもわかるような、わからないような状態なので、式を立てて一度整理したいと思います。
+例１ 問題 データ $D= { x^{(1)},&amp;hellip;, x^{(N)} }$（母集団） が与えられるとします。 このデータが正規分布に従うと仮定したら、最尤推定でパラメータを推定しましょう。
+回答 まず正規分布の式です。
+$$ p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \big(-\frac{(x-\mu)^2}{2\sigma^2}\big) $$
+最尤推定はとは、尤度がもっとも高くなるようにパラメータを決定する方法です。「できるかぎりデータにフィットさせる」推定方法です1。
+最尤推定の1つ目の条件は、データは独立に同一の確率分布(i.i.d)2に従うのです。 そこで、尤度(likelihood)は
+$$ p(D) = \prod_ {x^{(i)}\in D} p(x^{(i)}) $$
+です。これを最大化したいです。
+確率$p$は$[0,1]$の間の値なので、積をとるとコンピュータの計算に誤差が出るので実際、$\log$3をとることが多いです。
+$$ \begin{align} \log p(D) &amp;amp;= \sum_ {x^{(i)}\in D} \log p(x^{(i)}) \
+&amp;amp;= \sum_ {x^{(i)}\in D} \log \Big(\frac{1}{\sqrt{2\pi\sigma^2}}\exp \big(-\frac{(x^{(i)}-\mu)^2}{2\sigma^2}\big)\Big) \
+&amp;amp;= -\frac{N}{2}\log(2\pi) - N\log (\sigma) - \sum_ {x^{(i)}\in D} \frac{(x^{(i)}-\mu)^2}{2\sigma^2} \end{align} $$
+この場合のパラメータは$(\mu, \sigma)$ですね。</description></item><item><title>MeCabをLambdaに動かすメモ</title><link>http://example.org/post/run-mecab-on-lambda/</link><pubDate>Thu, 03 Nov 2016 08:21:00 +0000</pubDate><guid>http://example.org/post/run-mecab-on-lambda/</guid><description>絶対忘れるので覚えるうちにメモをとります。 基本的はhttp://dev.classmethod.jp/cloud/aws-lambda-with-mecab/に沿って進めますが、ダウンロードURLが死んだり、pipのインストールパス変わったりしました。
+0. Lambdaと同じ環境のEC2インスタンスを作る https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/current-supported-versions.html サポートAMIが時々変わるようなので作るときは必ずチェックしておきましょう。
+これからはEC2上に作業します。 LambdaはPython2.7しか使えないのでPython2.7.12を使いました。
+1. プロジェクトの作成 $ mkdir $HOME/preprocessing $ PROJECT_HOME=$HOME/preprocessing 2. MeCab のインストール HPのこちらのリンクからダウンロードできます。 GoogleDriveなのでwgetが使えないからMacに保存して、scpすればいいでしょう。例えば$HOMEに保存します。
+$ cd ~ $ tar zvxf mecab-0.996.tar.gz $ cd mecab-0.996 $ ./configure --prefix=$PROJECT_HOME/local --enable-utf8-only $ make &amp;amp;&amp;amp; make install 3. MeCab辞書のインストール mecab-ipadic-neologdを使いたかったですが、 Lambdaの容量制限超えてしまうので、IPA辞書を使います。ダウンロードリンクもMeCabと同じページにあります。
+$ tar zvxf mecab-ipadic-2.7.0-20070801.tar.gz $ cd mecab-ipadic-2.7.0-20070801 $ export PATH=$PROJECT_HOME/local/bin:$PATH $ ./configure --prefix=$PROJECT_HOME/local --enable-utf8-only $ make &amp;amp;&amp;amp; sudo make install 4. MeCab Python バインディングのインストール これは元の記事の方法には動かなかったので、別のpipパッケージをインストールします。
+$ cd $PROJECT_HOME $ virtualenv env $ source env/bin/activate $ pip install mecab-python3 インストール終わってもpython consoleから使えないです。</description></item><item><title>MacでMongoDBメモ</title><link>http://example.org/post/install-mongodb-on-mac/</link><pubDate>Wed, 31 Aug 2016 06:10:00 +0000</pubDate><guid>http://example.org/post/install-mongodb-on-mac/</guid><description>機械学習で大量のデータを扱いにはデータベースが欲しくなります。SQLデータベースは設計が面倒なので今回はNoSQLのMongoDBを選択しました。
+設定編 インストール $ brew update $ brew install mongodb データベースの保存先のディレクトリを作る $ sudo mkdir -p /data/db $ sudo chown -R 777 /data /data/dbはデフォルトなのでおすすめです。 777は多分危ないかもしれませんので、正しい権限を教えてください :bow:
+起動 サーバー $ mongod クライエント $ mongo MongoDB shell version: 3.2.9 connecting to: test Welcome to the MongoDB shell. For interactive help, type &amp;#34;help&amp;#34;. For more comprehensive documentation, see http://docs.mongodb.org/ Questions? Try the support group http://groups.google.com/group/mongodb-user &amp;gt; use mydb switched to db mydb &amp;gt; a = { content: &amp;#34;ほげほげ&amp;#34; } { &amp;#34;content&amp;#34; : &amp;#34;ほげほげ&amp;#34; } &amp;gt; db.</description></item><item><title>Effective DevOpsについて</title><link>http://example.org/post/effective-devops/</link><pubDate>Thu, 25 Aug 2016 18:30:00 +0000</pubDate><guid>http://example.org/post/effective-devops/</guid><description>Effective DevOpsという書籍を読んだのでまとめてみました！</description></item><item><title>MeCabに人名辞書を追加</title><link>http://example.org/post/add-custom-dict-to-mecab/</link><pubDate>Wed, 08 Jun 2016 07:25:00 +0000</pubDate><guid>http://example.org/post/add-custom-dict-to-mecab/</guid><description>生成された辞書（バイナリ）はどこでも使えますので、辞書生成はMac側で行います。
+インストール $ brew install mecab mecab-ipadic 構成 ## /usr/local/Cellar/mecab └── 0.996 ├── AUTHORS ├── COPYING ├── ChangeLog ├── INSTALL_RECEIPT.json ├── NEWS ├── README ├── bin │ ├── mecab │ └── mecab-config ├── include │ └── mecab.h ├── lib │ ├── libmecab.2.dylib │ ├── libmecab.a │ └── libmecab.dylib -&amp;gt; libmecab.2.dylib ├── libexec │ └── mecab │ ├── mecab-cost-train │ ├── mecab-dict-gen │ ├── mecab-dict-index │ ├── mecab-system-eval │ └── mecab-test-gen └── share └── man └── man1 └── mecab.</description></item><item><title>Elasticsearchのbool queryを利用してAND OR NOTを書いてみる</title><link>http://example.org/post/how-to-use-bool-query-in-elasticsearch/</link><pubDate>Mon, 25 Apr 2016 03:25:00 +0000</pubDate><guid>http://example.org/post/how-to-use-bool-query-in-elasticsearch/</guid><description>※ この記事をQiitaにも載せました！
+初めてElasticsearchのクエリをビルドしたのでいろいろハマりました。SQLの世界観とちょっと違っていて、なれるまで時間がかかると思います。でも、なれたら複雑な検索条件をSQLより簡単に書けるかも知れません。
+では、Elasticsearchの基礎クエリの一つ、Bool Queryを解説してみます。
+Bool Queryについて Elasticsearch 2.0からandクエリとorクエリは全部非推奨になり、その代わりにboolクエリの方が推奨されます。Boolクエリは複数のクエリを組み合わせる（つまりAND、OR、NOTで結合）のに使います。
+Boolクエリは４種類があります：must、 filter、 should、 must_ notです。
+クエリ 説明 must ANDとして使います。小クエリは総合スコアに影響を与えます filter mustと同じくANDです。ただし、スコアは無視されます（総合スコアに影響を与えません should ORとして使えます。 minimum_should_match パラメータで最低マッチする条項の数が指定できます[^n]。 must_ not NOTです。 使用例 AND条件 例えば、SQLはこういうSELECT文があります。
+SELECT * FROM users WHERE age &amp;gt;= 25 AND salary &amp;gt;= 500000; Elasticsearchのクエリに書き直すと、
+{ &amp;#34;query&amp;#34;: { &amp;#34;bool&amp;#34; : { &amp;#34;must&amp;#34; : [ { &amp;#34;range&amp;#34; : { &amp;#34;age&amp;#34; : { &amp;#34;gte&amp;#34;: 25 } } }, { &amp;#34;range&amp;#34; : { &amp;#34;salary&amp;#34; : { &amp;#34;gte&amp;#34;: 500000 } } } ] } } } になります。今回はmustを使いますが、スコア無視したい場合はfilterを使えばいいのです。</description></item><item><title>Coursera 機械学習 - プログラミング課題8解答例</title><link>http://example.org/post/coursera-machinelearning-assignment-8/</link><pubDate>Mon, 18 Apr 2016 04:57:00 +0000</pubDate><guid>http://example.org/post/coursera-machinelearning-assignment-8/</guid><description>ソースコード： https://github.com/vanhuyz/coursera-ml/tree/master/machine-learning-ex8/ex8
+概要 今回の課題は２パートに分かれています。前半は異常検出アルゴリズム（anomaly detection）を用いて障害が発生したサーバーを検出、後半は映画おすすめシステムを作ります。
+1. 異常検出 サーバーは２つのフィーチャーがあります：レスポンスのスループット(mb/s)とレイテンシ(ms)です。m = 307 examplesのデータがあって、その中少し異常点があります。
+1.1 正規分布 データ$x$は正規分布に従うのを仮定します。
+正規分布：
+$$ p(x;\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} $$
+ここで、$\mu$は平均値、$\sigma^2$は分散です。
+1.2 正規分布のパラメータ推定 $i$番目のフィーチャーに対して：
+平均値： $$ \mu_ i = \frac{1}{m} \sum_ {j=1}^{m} x_ i^{(j)} $$
+分散： $$ \sigma_ i^2 = \frac{1}{m}\sum_ {j=1}^{m}(x_ i^{(j)}-\mu_ i)^2 $$
+Octaveで書き直すと、
+mu = mean(X); sigma2 = var(X) * (m - 1) / m; 注意するのはOctaveの分散計算関数(var)はデフォルトでmではなくm-1を割るので工夫が必要です。
+正規分布のグラフ（2Dで輪郭表現）は以下になります。 1.3 しきい値の選択 しきい値$\epsilon$の選択にはクロスバリデーションセットで$F_ 1$スコアの計算が必要です。
+$F_ 1$はprecision ($prec$) とrecall ($rec$) から計算します。</description></item><item><title>Coursera 機械学習 - プログラミング課題6解答例</title><link>http://example.org/post/coursera-machinelearning-assignment-6/</link><pubDate>Mon, 14 Mar 2016 03:05:00 +0000</pubDate><guid>http://example.org/post/coursera-machinelearning-assignment-6/</guid><description>ソースコード：https://github.com/vanhuyz/coursera-ml/tree/master/machine-learning-ex6/ex6
+0. 概要 今回の課題はSupport Vector Machines(SVM)を使って迷惑メールを識別することです　(spam classifier)。パート１はSVMをいろいろ試すのと、パート２は迷惑メールの課題になります。
+1. Support Vector Machines (SVM) SVM with Gaussian Kernels Gaussian Kernel:
+$$ K_ {gaussian}(x^{(i)},x^{(j)}) = \exp\Big(-\frac{|x^{(i)}-x^{(j)}|^2}{2\sigma^2}\Big) = \exp\Bigg(-\frac{\sum_ {k=1}^n(x_ k^{(i)}-x_ k^{(j)})^2}{2\sigma^2}\Bigg) $$
+Octaveで書き直すと、
+function sim = gaussianKernel(x1, x2, sigma) x1 = x1(:); x2 = x2(:); sim = exp(-norm(x1 - x2)^2 / (2*sigma^2)); end 途中で実行するエラーがありました
+error: get: unknown hggroup property Color visualizeBoundary.m ファイルの21行
+contour(X1, X2, vals, [1,1], 'b') に変更するとなおりました。
+参考：https://www.coursera.org/learn/machine-learning/discussions/1RmNir4KEeWSBRJpSArseQ
+データセット２の実行結果： Cross Validation Setでパラメータ選択 SVMのライブラリを使う前提なのでSVMの中身は気にしなくていいです。SVM with a Gaussian kernelを使う場合、調整必要なパラメータは$C$と$\sigma$だけです。$C$は正規化を調整するパラメータで、$\sigma$は２つ点の類似度（similarity)を調整するパラメータです。 一般的に,</description></item><item><title>Coursera 機械学習 - プログラミング課題4解答例</title><link>http://example.org/post/coursera-machinelearning-assignment-4/</link><pubDate>Sun, 21 Feb 2016 08:29:00 +0000</pubDate><guid>http://example.org/post/coursera-machinelearning-assignment-4/</guid><description>解答例：https://github.com/vanhuyz/coursera-ml/tree/master/machine-learning-ex4/ex4
+概要 今回の課題は前回と続き手書き数字の判定問題です。前回はニューラルネットワークで、与えられたパラメータからフィードフォワード・プロパゲイションを行うところまででした。今回はbackpropagationアルゴリズムを使って、パラメータを抽出することです（学習過程）。
+1. ニューラルネットワーク 1.1 データを可視化 5000学習データがあり、各データは20x20ピックセルグレースケールの数字画像です。
+1.2 モデル表現 ニューラルネットワークは３つのレイヤーがあります：input layer, hidden layerとoutput layerです。
+1.3 フィードフォワードとコスト関数 ニューラルネットワークのコスト関数（未正規化）はこのように計算できます。
+$$ J(\Theta) = \frac{1}{m}\sum_ {i=1}^{m}\sum_ {k=1}^{K}\Big[-y_ k^{(i)}\log((h_ \Theta(x^{(i)}))_ k)-(1-y_ k^{(i)})\log(1-(h_ \Theta(x^{(i)}))_ k)\Big] $$
+ここで$K=10$（10数字）、$m=5000$（学習データ）、$h_ \theta$はFigure 2から計算できます。$y$は0から9の数字ですが、計算都合のため以下の図のようにベクトルにマッピングします。
+課題はコスト関数をOctaveで計算することです。
+function[J grad] = nnCostFunction(nn_ params, ... input_ layer_ size, ... hidden_ layer_ size, ... num_ labels, ... X, y, lambda) % Reshape nn_ params back into the parameters Theta1 and Theta2 Theta1 = reshape(nn_ params(1:hidden_ layer_ size * (input_ layer_ size + 1)), .</description></item><item><title>Coursera 機械学習 - プログラミング課題２解答例</title><link>http://example.org/post/coursera-machinelearning-assignment-2/</link><pubDate>Sun, 31 Jan 2016 15:38:00 +0000</pubDate><guid>http://example.org/post/coursera-machinelearning-assignment-2/</guid><description>課題について 今回の課題はLogistic Regression（分類）に関するものです。
+https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression
+ソースコードはgithubに上げました。
+https://github.com/vanhuyz/coursera-ml/tree/master/machine-learning-ex2/ex2
+問題１ Logistic regressionモデルで学生の過去の２つテスト結果から大学入試に合格・不合格を予測します。
+学習データは以下の図の通りです。＋は合格、◯は不合格です。
+1. Sigmoid関数 Sigmoid関数は以下のように定義されています。
+$$ g(z)=\frac{1}{1+e^{-z}} $$
+注意したいのはzはスカラー、ベクトル、行列でもいいです。ベクトル・行列の場合は各要素を適応することになるます。
+実装：
+function g = sigmoid(z) g = zeros(size(z)); g = 1 ./ (1 + exp(-z)); end Octaveの**+**、**exp**演算子はもし行列と実数を計算するとき、自動に各要素に適応するようです。　**/**　はそうになっていないのでちゃんと　**.**　をつけましょう。
+2. Cost function and gradient Cost function: $$ J(\theta) = \frac{1}{m}\sum_ {i=1}^{m}[-y^{(i)}\log(h_ \theta(x^{(i)}))-(1-y^{(i)})\log(1-h_ \theta(x^{(i)}))] $$
+Gradient: $$ \frac{\partial J(\theta)}{\partial \theta_ j} = \frac{1}{m}\sum_ {i=1}^m (h_ \theta(x^{(i)})-y^{(i)})x_ j^{(i)} $$</description></item><item><title>Coursera 機械学習 - プログラミング課題1解答例</title><link>http://example.org/post/coursera-machinelearning-assignment-1/</link><pubDate>Mon, 18 Jan 2016 13:07:00 +0000</pubDate><guid>http://example.org/post/coursera-machinelearning-assignment-1/</guid><description>課題のページ https://www.coursera.org/learn/machine-learning/programming/8f3qT/linear-regression
+プログラミング課題はちょっと重いので今回の解答例を上げます。 わからないことや別の解答がありましたらコメントをお願いします。
+必須課題 1. Computing Cost (for One Variable) Gradient DescentのCost function $J(\theta)$ は以下の通り
+$$ J(\theta) = \frac{1}{2m}\sum_ {i=1}^m (h_ \theta(x^{(i)}) - y^{(i)} )^2 $$
+ここで、仮定関数 $ h_ \theta(x) $は
+$$ h_ \theta(x) = \theta^T x = \theta_ 0 + \theta_ 1x_ 1 $$
+それで、
+$$ J(\theta) = \frac{1}{2m}\sum_ {i=1}^m (\theta^T x^{(i)} - y^{(i)} )^2 $$
+注意したいのは $\theta$ と $x^{(i)}$ はベクトルで、$ y^{(i)} $は実数です。 課題はこの関数をOctaveで書くことです。以下は解答例です。
+function J = computeCost(X, y, theta) m = length(y); % number of training examples % 97 examplesがあるのでここで m == 97 % size(X) == [97 2] % size(y) == [97 1] % size(theta) == [2 1] % Xは97x2行列。１行は１つのtraining example [x0 x1]　(x0はいつも1) % yは97次元ベクトル % thetaは２次元ベクトル J = 0; % まずは和の部分を計算します for i = 1:m J += (theta&amp;#39; * X(i,:)&amp;#39; - y(i))^2; end % X(i,:)は１つの行、つまりtraining exampleです。ベクトルに変換するので転置を取りました。 % 最後に2mを割るだけです J = J / (2*m); end 実行した結果、cost functionの値は32.</description></item><item><title>メンテナンス本格入門のまとめ</title><link>http://example.org/post/maintenance-introduction/</link><pubDate>Sat, 29 Aug 2015 06:31:00 +0000</pubDate><guid>http://example.org/post/maintenance-introduction/</guid><description>メンテナンスは必要？ メンテナンスなんてない方がよい それでも行う必要があるとき 歴史的かつ技術的な負債 作業難度のトレードオフ メンテナンスの種類 計画メンテナンス 事前に計画し、ユーザー告知を行って作業を行う。これに当たる主だった作業としては
+ハードウェアの保留／入れ替え データベースの設定変更 ネットワークの保留 手順：
+作業手順作成 事前準備：Sorryサーバーの準備 テスト環境での予行演習 作業実施：作業チェック、問題発生時の対処 確認作業：モニタリング、作業の振り返り 緊急メンテナンス 障害が発生した場合などに原因を解決／追求品ケラバサービス継続が難しい場合などに行う。内容は
+障害復旧 障害の現状保存 障害の詳細調査 手順
+障害検知 原因調査 メンテナンス判断 作業実施 確認作業 振り返り・ノウハウ化 その他：ユーザーへ告知、補償 メンテナンスの手法 全停止メンテナンス 一部停止メンテナンス 無停止メンテナンス メンテフリーへのアプローチ メンテフリーとはサビースを停止せずメンテナンスを行う。そのためには、設計、構築、運用のすべての段階で「いかにSPOFをなくし、システム停止せずに作業できるか」を考え続ける必要がある。アプローチは様々あるが、弊社に適したものは以下にあげられる。
+Webサーバー、アプリケーションサーバー ロードバランサによって複数のサーバーにアクセスを振り分け、２台以上用意する。Apache/Nginx・アプリケーションサーバーの設定変更や再起動といった作業でユーザーに影響があるシステム構成いなっているものは好ましくない
+データベース設計： スキーマ変更の頻度高いサービスはMongoDBへ RDBの場合はマスタスレーブ構成やマスタ分割、スキーマ変更のコストを下げる。MySQLの場合はオンラインスキーマ変更がある リリース： ロードバランサ切り離しによるリリース：ロードバランサからアプリケーションサーバーを分離し、１台ずつアプリケーションを入れ替えていく。Jenkinsなどでサーバーに順次デプロイしていくと良い 系切り替えによるリリース：稼働系と待機系の２系統を準備し、ロードバランサでクライアントの向き先を切り替えてリリースする ホットデプロイによる動的リリース：アプリケーションを再起動せずにモジュールを更新する機能。UnicornやPumaなどはこの機能がある（と書いてある） カナリアリリース：一部のユーザーから徐々に新バージョンのアプリケーションを適用していく手法。FacebookやGoogleの大規模サービスはこの方法でデプロイされている 結論 サービスの種類・規模や原因によって様々なパータンがある。いつ起こるのもわからない。そのため、監視ツールを導入や毎日心構えが必要である（エンジニアの辛い道）</description></item><item><title>Fluentd導入してからエラーログを全部Slackに通知する</title><link>http://example.org/post/send-error-log-to-slack-via-fluentd/</link><pubDate>Thu, 21 May 2015 09:24:00 +0000</pubDate><guid>http://example.org/post/send-error-log-to-slack-via-fluentd/</guid><description>やりたいこと サーバーが落ちるときすぐ管理者に通知する
+設計イメージ Fluentdで全部のエラーログをまとめてSlackに送信する。
+Fluentd導入 Fluentdとは ログ収集ミドルウェアである。Fluentdにインプットされた、すべてのログをJSONに変換し、アウトプットする。
+Fluentdのインストール　(Ubuntu 14.04) 事前準備 ntpをインストールする $ sudo apt-get install ntp ファイルディスクリプタの上限を増やす 現在のファイルディスクリプタ数を確認
+$ ulimit -n 1024 もし1024なら不十分なので上限を増やす。/etc/security/limits.conf に以下の行を追加する
+root soft nofile 65536 root hard nofile 65536 * soft nofile 65536 * hard nofile 65536 編集終わったらマシン再起動
+$ sudo reboot もう一度確認
+$ ulimit -n 65536 Fluentdのインストール $ curl -L http://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.sh | sh 起動するときFluentd(td-agent)を自動に起動
+$ sudo update-rc.d td-agent defaults Slackへ連帯 FluentdのSlackプラグインをインストールする $ sudo /opt/td-agent/embedded/bin/fluent-gem install fluent-plugin-slack SlackのWebhookを登録 https://yourteam.</description></item><item><title>nginxの紹介</title><link>http://example.org/post/nginx-introduction/</link><pubDate>Thu, 19 Mar 2015 17:56:00 +0000</pubDate><guid>http://example.org/post/nginx-introduction/</guid><description>最近Apacheからnginxに乗り換えたので、nginxの紹介について発表しました！</description></item><item><title>Railsで論理削除を考慮するunique制約のかけ方</title><link>http://example.org/post/how-to-apply-unique-restriction-with-soft-delete-in-rails/</link><pubDate>Fri, 13 Feb 2015 11:15:00 +0000</pubDate><guid>http://example.org/post/how-to-apply-unique-restriction-with-soft-delete-in-rails/</guid><description>使用バージョン Rails 4.2.0 Ruby 2.2.0 MySQL 5.6 論理削除のgem: paranoia 2.1.0 目的 例えばこういうuserモデルがあります
+# 20150119070756_create_users.rb class CreateUsers &amp;lt; ActiveRecord::Migration def change create_table :users do |t| t.string :name, :limit =&amp;gt; 20 t.datetime :deleted_at # &amp;lt;- 論理削除 t.timestamps null: false end end end 注意したいのはdeleted_atコラムは削除した日付です。デフォルトだと、
+非削除レコードはdeleted_at IS NULL 削除済みレコードはdeleted_at IS NOT NULL 問題: もしnameをunique制約をかけると、削除済みレコードはそのままデータベースに残るので同じnameのレコードを追加することができません。
+目的: 非削除レコードの中でnameをunique制約したい。
+ネットで調べるとハマる人が少なくないようです。 今回はデータベースレベルとアプリケーションレベルの両方設定します。
+作業内容 まずdeleted_atはNULLだとunique複合キーを設定するのも意味ないのでNULLを避けます。
+設定ファイルparanoia.rbを作る # config/initializers/paranoia.rb Paranoia.default_sentinel_value = DateTime.new(0) 以上の１行だけで、
+非削除レコードはdeleted_at = '0000-01-01 00:00:00' 削除済みレコードはdeleted_at !</description></item><item><title>MySQLで大量のデータを挿入して、SELECTパーフォマンスを比較する</title><link>http://example.org/post/mysql-performance-experiment/</link><pubDate>Tue, 03 Feb 2015 09:57:00 +0000</pubDate><guid>http://example.org/post/mysql-performance-experiment/</guid><description>大量のデータを扱う機会があるため、データが非常に多いときMySQLのパフォーマンスはどうなるかを検討した。
+検討するテーブル： 検討したいquery： SELECT * FROM activity_records WHERE date BETWEEN &amp;#39;2014-01-01&amp;#39; AND &amp;#39;2014-04-10&amp;#39;; なのでdateコラムにindexをつけた。このテーブルに5億ぐらいのレコードがあるとき、レスポンス時間はどのぐらいなのか検討したい。
+環境： SSD: 256GB
+テーブルに5億レコードを挿入する この記事は大変参考になりました：Mass inserting data in Rails without killing your performance
+単純の(5*10**8).times { Model.create(options) }なら20日間がかかるのに対し、１つのINSERTを大量のデータをまとめ（bulk insertと呼ばれる）すると１０時間しかかからない。
+最終のrakeタスクのコードは以下となる
+# insert_data.rake namespace :insert_data do desc &amp;#34;Insert dummy activity records&amp;#34; task run: :environment do TOTAL_RECORDS = 500000000 RECORDS_PER_TIME = 50000 CONN = ActiveRecord::Base.connection start_time = Time.now (TOTAL_RECORDS/RECORDS_PER_TIME).times do |i| inserts = Array.</description></item><item><title>API開発用必要なGemのまとめ（2015/08更新）</title><link>http://example.org/post/gem-curation/</link><pubDate>Fri, 30 Jan 2015 04:50:00 +0000</pubDate><guid>http://example.org/post/gem-curation/</guid><description>初めてRailsプロジェクトに入ったとき、Gemfileを見ても全くわからなかった。Rails初心者のため必要なGemをまとめました。良いGemを発見したらどんどん更新していこうと思います。
+2015/08/13時点
+データベース関連 mysql2 MySQLアダプタ MySQLを使うなら必須 redis Ruby client library for Redis cache, session保存用 ar-octopus レプリケーション (master+slave管理) switch_point (※ 2015/08/13追加） ar-octopusの代替。機能はar-octopusまで高くないが、master+slave切り替えぐらいなら十分 paranoia 論理削除 API grape REST API生成 grape-entity grapeのサーポート レスポンス(json)を簡単に記述できる grape-swagger grapeのサーポート Swaggerドキュメントを生成する kramdown grape-swaggerのサーポート markdownパーサー rack-cors Cross-Origin Resource Sharing (CORS)をハンドリング Swaggerを別のサーバーに置く場合はこれが必須 kaminariまたはgrape-kaminari APIのページネーション テスト rspec-rails テストフレームワーク capybara (※ 2015/08/13追加） Websiteのテストフレームワーク shoulda-matchers (※ 2015/08/13追加） モデルテストに便利 spork-rails テストの実行時間を短縮してくれる factory_girl_rails テストデータを用意する database_cleaner FactoryGirlにて作成するテストデータを、テストを実行する度に消去する turnip (※ 2015/08/13追加） Rspecの中にCucumber風コードを書ける capybara-screenshot (※ 2015/08/13追加） Capybaraのテストが失敗したら自動的にスクリーンショートを撮る ユーザ認証 devise ユーザ登録・ログインまで全てやってくれる 管理画面 activeadmin 10分で作れる管理画面 Push通知 houston iOSデバイスにpush通知を送る定番のgem invalid tokenが混じると通知が届かないバグがある（2014/12) parse-ruby-client (※ 2015/08/13追加） Parseと連携 バックグラウンド処理 sidekiq バックグラウンドworkerの定番 sucker_punch (※ 2015/08/13追加） Sidekiqはredisが必須なのでインフラコストが上がる。メールをバックグラウンドで送るぐらいならsucker_punchの方が軽い whenever Cron jobs管理 画像関連 carrierwave 画像アップロードの定番 paperclip (※ 2015/08/13追加） これも画像アップロードの定番 fog carrierwaveのサーポート S3にアップロード rmagick 画像処理（サイズ調整、角丸など）に便利 デプロイ用 unicorn 本番用のWebサーバー 設定は面倒 capistrano 有名なデプロイツール capistrano-rails db migrateとassets compileタスクを用意する capistrano-rbenv デプロイ先にrbenv使ったらこれが必要 capistrano3-unicorn デプロイした後unicornを再起動してくれる Ubuntu14.</description></item><item><title>Docker経由Swagger UIを入れてみた</title><link>http://example.org/post/use-swagger-ui-in-docker/</link><pubDate>Tue, 20 Jan 2015 11:10:00 +0000</pubDate><guid>http://example.org/post/use-swagger-ui-in-docker/</guid><description>はじめに 目的：SwaggerUIを開発環境に入れて、Railsと組み合わせたい Railsのswagger-ui gemもありますが、あれはSwaggerUIが古い。最新版のSwaggerUIを使いたい。 手動で構築するのがちょっと面倒だから、Dockerを使って入れてみた
+作業 Docker HubにSwagger UIを探してこういうイメージを見つけた
+https://registry.hub.docker.com/u/capoferro/swagger-ui/
+capoferro / swagger-ui Simple docker container to serve the Swagger UI
+インストールする方法は以下となります
+イーメジをpullする $ docker pull capoferro/swagger-ui コンテナを起動する $ docker run -d -p 4567:80 capoferro/swagger-ui このコマンドはSwaggerUIコンテナの80ポートをホストマシンの4567ポートに紐付ける
+ブラウザにboot2dockerマシンのIP（普通192.168.59.103）のポート4567をアクセスするとSwaggerの画面が出てくる これでSwaggerUIのインストールが成功した。
+最後にRailsのアプリを紐付けること:
+動いているSwaggerコンテナのIDを確認する ( $ docker ps) 今回コンテナIDは859502ad6704がわかりました。
+SwaggerUIコンテナに入る $ docker exec -i -t 8595 /bin/bash (8595はコンテナIDの先頭４文字です。コンテナIDを指定するとき先頭3,4文字でも動くはず）
+index.htmlの中にurlのところにデフォルトURLをRailsのswagger_docパスに変更する： viでもいいですが、キーボードがおかしかったのでsedを使いました $ sed -i &amp;#34;s@http://petstore.</description></item><item><title>Docker + Figを使ってRailsの開発環境を構築する</title><link>http://example.org/post/docker-figwoshi-tuterailsnokai-fa-huan-jing-wogou-zhu-suru/</link><pubDate>Mon, 19 Jan 2015 12:38:00 +0000</pubDate><guid>http://example.org/post/docker-figwoshi-tuterailsnokai-fa-huan-jing-wogou-zhu-suru/</guid><description>前回はDockerで構築したアプリを使うのを述べました。今回は実際どうやってそのRailsアプリを構築するのかを紹介します。
+構築したい環境 Ruby 2.2 Rails 4.2.0 MySQL Redis シナリオ 以上の条件でコンテナを３つ準備します。
+web ： Railsアプリ。もちろんRubyが入ってるので今回はofficial ruby imageをベースにコンテナを作ります db ： official MySQL imageを採用します redis： official Redis imageを採用します 気づいたのは使った３つのofficial imagesは全部Debian (Ubuntuと似ているLinux OS）です。違うOSでも問題ないでしょう。
+webコンテナのDockerfile
+# Docker hubのruby imageをpullする。2.2.0を指定 FROM ruby:2.2.0 MAINTAINER vanhuyz # 必要なパッケージをインストール RUN apt-get update -qq &amp;amp;&amp;amp; apt-get install -y build-essential libpq-dev # myappディレクトリーをwebコンテナに作成 RUN mkdir /myapp # RUN, CMDのworking directoryを指定 WORKDIR /myapp # hostマシンのGemfileをwebコンテナにコピーする ADD Gemfile /myapp/Gemfile # webコンテナにbundle installを実行 RUN bundle install # 生成されたファイルをwebコンテナにコピーする ADD .</description></item><item><title>魔法のDockerを使ってみよう</title><link>http://example.org/post/try-magical-docker/</link><pubDate>Fri, 16 Jan 2015 08:37:00 +0000</pubDate><guid>http://example.org/post/try-magical-docker/</guid><description>前回はDockerをインストールするまで記述しました。今回は実際Dockerで構築したRailsアプリを動かしましょう。
+前提 Mac OS Xにboot2dockerが起動された状態、またはLinuxにDockerインストール済み
+作業 まずFigというコンテナ管理ツールをインストールします $ curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/fig; chmod +x /usr/local/bin/fig 次に構築したRailsアプリをcloneします $ git clone git@github.com:vanhuyz/rails-docker-test.git $ cd rails-docker-test 最後にfig up するだけで $ fig up 完了!
+構築したRailsアプリの確認　（Yosemite編） 僕のRails環境は以下のように構成されています
+Ruby 2.2 Rails 4.2.0 MySQL Redis では構築できた環境を確認しましょう！
+まずboot2docker仮想マシンのIPを確認します。
+Vans-MacBook-Air:~ vanhuy$ boot2docker ip 192.168.59.103 webコンテナは3000ポートに紐付いているのでブラウザから192.168.59.103:3000にアクスセスしてみると
+やった！ちゃんとRailsの初期画面が出ています。
+次にmysqlの確認：
+Vans-MacBook-Air:~ vanhuy$ mysql -h 192.168.59.103 -u root -p Enter password: Welcome to the MySQL monitor.</description></item><item><title>Dockerをインストールする（Yosemite編）</title><link>http://example.org/post/install-docker-on-yosemite/</link><pubDate>Thu, 15 Jan 2015 07:59:00 +0000</pubDate><guid>http://example.org/post/install-docker-on-yosemite/</guid><description>Docker導入する理由 開発環境を一気構築できる コンテナ型仮想化なので軽い Vagrant/Chefより学習コストが低い 小さいコンテナから構成されるので安定性が高まる Amazon EC2 Container Serviceが発表されたから本番構築でも可能に！ Yosemiteにインストールしてみよう インストール方法は非常に簡単です。
+Boot2dockerパッケージをダウンロードする ダウンロードしたパッケージをダブルクリックしてインストールする Boot2Dockerアプリを起動する どのターミナルにも使いたい場合は以下のコマンドを~/.bash_profileに追加する $(boot2docker shellinit) 終わり！ 参考：公式サイト
+Boot2dockerを分解してみよう ではBoot2dockerは何が入っているのかを調べてみた。
+VirtualBox：仮装化ソフトウェア Boot2Docker：小さいLinuxベースOS。DockerはLinuxベースで動作するから、Macに動作する場合は仮装マシンが必要。インストールできたらboot2docker-vmがVirtualBoxに入っているはず Boot2Docker Management Tool： Boot2Dockerの管理ツール。コマンドが充実。 $ boot2docker Usage: boot2docker [&amp;lt;options&amp;gt;] {help|init|up|ssh|save|down|poweroff|reset|restart|config|status|info|ip|shellinit|delete|download|upgrade|version} [&amp;lt;args&amp;gt;] $ boot2docker ssh # boot2docker仮装マシンにSSHする $ cat /proc/version Linux version 3.16.7-tinycore64 (root@064f0e1ce709) (gcc version 4.7.2 (Debian 4.7.2-5) ) #1 SMP Tue Dec 16 23:03:39 UTC 2014 Docker Client：dockerコマンドが使えるようになります。Dockerの使い方は本当に長くなりそうですから、以下は重要なコマンドをリストアップします $ docker # 全部コマンドが見られる $ docker version # dockerバージョンを見る $ docker search &amp;lt;string&amp;gt; # DockerHubにイメージを検索 $ docker pull &amp;lt;username&amp;gt;/&amp;lt;repository&amp;gt; # イメージをダウンロード $ docker run &amp;lt;username&amp;gt;/&amp;lt;repository&amp;gt; &amp;lt;command&amp;gt; ## コンテナの中にコマンドを実行する。例えば： $docker run learn/tutorial echo “hello” $ docker ps -l # 作ったコンテナのIDを調べる $ docker commit &amp;lt;ID&amp;gt; &amp;lt;username&amp;gt;/&amp;lt;new_repository&amp;gt; ## コンテナをイメージ化する $ docker inspect &amp;lt;ID&amp;gt; # コンテナの全部情報が見られる $ docker images # 現在のホストになんのイメージが入っているのか $ docker push &amp;lt;username&amp;gt;/&amp;lt;repository&amp;gt; # DockerHubにpushする 参考：Try Docker</description></item><item><title>AWS VPCの紹介</title><link>http://example.org/post/aws-vpc-introduction/</link><pubDate>Fri, 19 Dec 2014 04:47:00 +0000</pubDate><guid>http://example.org/post/aws-vpc-introduction/</guid><description>勉強会でAWS VPCについて発表してきました！</description></item></channel></rss>
