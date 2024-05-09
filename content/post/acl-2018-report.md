@@ -80,7 +80,7 @@ muilti-choice 読解のタスクです。TOEIC を想像するとわかりやす
 対話システムで感情的なレスポンスを生成する研究です。データセットは Twitter からツイートとリプライのペアの収集し、絵文字が感情の "自然ラベル" とします。例えば、元々のツイートが「@amy  💗 miss you soooo much!!! 😭😭😭 」のとき、最後の絵文字 「😭」が感情のラベルとなります。その感情もパラメータとして、Conditional VAE (CVAE) と Reinforced CVAE でレスポンスを生成します。
 例：
 
-- query: add me in there my bro 🙏 
+- query: add me in there my bro 🙏
 - response:
   - 😜:i ’m not sure you ’ll be there
   - 💪: i ’m here for you
@@ -90,14 +90,14 @@ muilti-choice 読解のタスクです。TOEIC を想像するとわかりやす
 
 ### Hierarchical Neural Story Generation [[paper](http://aclweb.org/anthology/P18-1082)] (Facebook AI Research)
 story 生成のタスクですが、2段階に分けて、まず prompt (主な単語の集合）を生成し、そこから story を生成します。例えば、
-Prompt: 
+Prompt:
 > The Mage, the Warrior, and the Priest
 
-Story: 
+Story:
 
 > A light breeze swept the ground, and carried with it still the distant scents of dust and time-worn stone. The Warrior led the way, heaving her mass of armour and muscle over the uneven terrain. She soon crested the last of the low embankments, which still bore the unmistakable fingerprints of haste and fear. She lifted herself up onto the top the rise, and looked out at the scene before her. [...]
 
-Reddit からデータセットを構築し、それを用いて検証する研究です。prompt 生成は convolutional language model で、story 生成は convolutional seq2seq で行いました。 ここで CNN を使う理由は CNN が parallel 処理できるからです。特に、long story の生成に有利です。また、story 生成のとき、fusion model を提案し（a pretrained seq2seq +  another seq2seq) と self-attention を使うより、自然な story が生成されたという結果です。 
+Reddit からデータセットを構築し、それを用いて検証する研究です。prompt 生成は convolutional language model で、story 生成は convolutional seq2seq で行いました。 ここで CNN を使う理由は CNN が parallel 処理できるからです。特に、long story の生成に有利です。また、story 生成のとき、fusion model を提案し（a pretrained seq2seq +  another seq2seq) と self-attention を使うより、自然な story が生成されたという結果です。
 
 **感想：** このタスクを気になる理由はレシピ生成と似ています。まず、食材 (≒prompt) を生成してから手順 (≒story) を生成することです。
 

@@ -1,10 +1,37 @@
-baseURL = "https://vanhuyz.github.io/"
+baseURL = "https:/vanhuyz.github.io/"
 disablePathToLower = true
 languageCode = "en-us"
 title = "vanhuyz's notes"
 theme = "gohugo-theme-ananke"
+resourceDir = "../resources"
+googleAnalytics = ""
+enableRobotsTXT = true
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  favicon = ""
+  site_logo = ""
+  description = "vanhuyz's blogs"
+  facebook = "https://www.facebook.com/vanhuyz"
+  twitter = "https://twitter.com/vanhuyz"
+  instagram = ""
+  youtube = ""
+  github = "https://github.com/vanhuyz"
+  gitlab = ""
+  linkedin = "https://www.linkedin.com/in/vanhuyz/"
+  mastodon = ""
+  slack = ""
+  stackoverflow = ""
+  rss = ""
+  background_color_class = "bg-black"
+  featured_image = "/images/fuji.jpg"
+  recent_posts_number = 10
