@@ -3,7 +3,7 @@ title: "Làm Phần Mềm Thời AI: Điều Gì Thay Đổi, Điều Gì Không
 date: 2025-04-18T21:44:42+09:00
 tags: ["AI","Software Development"]
 featured_image: "/content/images/2025/01/image4.png"
-description: ""
+description: "Phân tích quy trình phát triển phần mềm hiện nay, khả năng thay thế của AI và vai trò không thể thiếu của con người."
 ---
 
 Trong hơn một thập kỷ qua, ngành phát triển phần mềm đã liên tục thay đổi: từ mô hình Waterfall truyền thống sang Agile linh hoạt và các phiên bản DevOps, Lean. Nhưng có lẽ, làn sóng thay đổi mạnh mẽ nhất đang đến từ **trí tuệ nhân tạo (AI)**.
