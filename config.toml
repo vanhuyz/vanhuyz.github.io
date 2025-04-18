@@ -4,7 +4,7 @@ languageCode = "en-us"
 title = "vanhuyz's notes"
 theme = "gohugo-theme-ananke"
 resourceDir = "../resources"
-googleAnalytics = ""
+googleAnalytics = "G-PEBPY7GKR4"
 enableRobotsTXT = true
 
 [markup]
