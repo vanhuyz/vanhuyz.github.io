@@ -11,6 +11,7 @@ description: "Phân tích quy trình phát triển phần mềm hiện nay, kh�
 Trong hơn một thập kỷ qua, ngành phát triển phần mềm đã liên tục thay đổi: từ mô hình Waterfall truyền thống sang Agile linh hoạt và các phiên bản DevOps, Lean. Nhưng có lẽ, làn sóng thay đổi mạnh mẽ nhất đang đến từ **trí tuệ nhân tạo (AI)**.
 
 Từ việc gợi ý mã, tạo wireframe, sinh test case đến phân tích log hệ thống – AI đang **lặng lẽ len vào từng bước** của quy trình phát triển phần mềm. Điều đó khiến nhiều người đặt câu hỏi:
+
 👉 *Liệu AI có thể thay thế lập trình viên, tester, hay thậm chí là cả người quản lý dự án?*
 
 Bài viết này sẽ cùng bạn:
