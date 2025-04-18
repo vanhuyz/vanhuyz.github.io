@@ -4,6 +4,7 @@ categories = ["Machine Learning", "AWS", "Vietnamese", "AI"]
 date = 2019-07-22T12:14:03Z
 description = ""
 draft = false
+featured_image = "/content/images/2019/07/AWS-Certified-Machine-Learning---Specialty-certificate.jpg"
 slug = "kinh-nghiem-thi-aws-machine-learning"
 tags = ["Machine Learning", "AWS", "Vietnamese", "AI"]
 title = "Kinh nghiệm thi AWS Certified Machine Learning – Specialty"
@@ -11,7 +12,7 @@ title = "Kinh nghiệm thi AWS Certified Machine Learning – Specialty"
 +++
 
 
-Tiếp theo kinh nghiệm thi chứng chỉ [Solutions Architect - Associate](https://vanhuyz.com/kinh-nghiem-thi-chung-chi-aws-certified-solutions-architect-associate/) lần trước thì lần này là chứng chỉ [Machine Learning – Specialty](https://aws.amazon.com/certification/certified-machine-learning-specialty/). Để đạt được chứng chỉ này bạn cần có những kiến thức cơ bản về Machine Learning (ML), khả năng ứng dụng ML vào các bài toán thực tế cũng như sử dụng thành thạo các dịch vụ liên quan tới ML của AWS. 
+Tiếp theo kinh nghiệm thi chứng chỉ [Solutions Architect - Associate](https://vanhuyz.com/kinh-nghiem-thi-chung-chi-aws-certified-solutions-architect-associate/) lần trước thì lần này là chứng chỉ [Machine Learning – Specialty](https://aws.amazon.com/certification/certified-machine-learning-specialty/). Để đạt được chứng chỉ này bạn cần có những kiến thức cơ bản về Machine Learning (ML), khả năng ứng dụng ML vào các bài toán thực tế cũng như sử dụng thành thạo các dịch vụ liên quan tới ML của AWS.
 
 Các bạn có thể tham khảo câu hỏi mẫu tại [đây](https://d1.awsstatic.com/training-and-certification/docs-ml/AWS%20Certified%20Machine%20Learning%20-%20Specialty_Sample%20Questions.pdf).
 
@@ -49,14 +50,14 @@ Dưới đây là những tài liệu mình đã tham khảo.
 
 * Machine Learning Exam Basics: https://www.aws.training/learningobject/curriculum?id=27271
 
-* Developing Machine Learning Applications: 
+* Developing Machine Learning Applications:
 https://www.aws.training/learningobject/curriculum?id=27243
 
 ##### Practice exam
 Phí dự thi 1 lần là 4000 yên với 20 câu hỏi trong 60 phút. Miễn phí 1 lần cho người đã có chứng chỉ khác của AWS (quá tiện). Mình sử dụng để tham khảo xu hướng của đề thi.
 
 ##### Khoá học AWS Certified Machine Learning – Specialty trên acloud.guru
- 
+
 https://learn.acloud.guru/course/aws-certified-machine-learning-specialty/dashboard
 
 acould.guru cho miễn phí trong 7 ngày nên để tiết kiệm tiền các bạn cố gắng học cấp tốc trong 7 ngày là ổn. Mình không xem hết nhưng thấy cái exam tips của họ rất hữu ích.
@@ -76,20 +77,20 @@ Dưới đây là những gì mình tổng hợp lại vì có thể có ích.
 #### 2. Các dịch vụ nền tảng (platform services)
 
 - SageMaker
-- DeepLens 
+- DeepLens
 - AWS Deep Learning AMI
 - MXNet/Gluon
 
-SageMaker có thể nói là trung tâm của hệ sinh thái AWS liên quan tới ML. SageMaker giúp quản lý jupyter notebook, với rất nhiều các thuật toán built-in, giúp tự động tunning hyperparameter theo Baysian Optimization. Nó giúp việc deploy chỉ với 1-click, quản lý model traffic và có auto-scaling. Nói chung mình cảm nhận SageMaker được AWS đầu tư rất nhiều, tới mức mà nói về ML on AWS là nói tới SageMaker nên trong bài thi có 1 phần không nhỏ về thằng này. 
+SageMaker có thể nói là trung tâm của hệ sinh thái AWS liên quan tới ML. SageMaker giúp quản lý jupyter notebook, với rất nhiều các thuật toán built-in, giúp tự động tunning hyperparameter theo Baysian Optimization. Nó giúp việc deploy chỉ với 1-click, quản lý model traffic và có auto-scaling. Nói chung mình cảm nhận SageMaker được AWS đầu tư rất nhiều, tới mức mà nói về ML on AWS là nói tới SageMaker nên trong bài thi có 1 phần không nhỏ về thằng này.
 
-Để hiểu kỹ hơn về SageMaker tham khảo thêm ở [Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html). 
+Để hiểu kỹ hơn về SageMaker tham khảo thêm ở [Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html).
 
 Trong các thuật toán built-in của SageMaker có 1 thuật toán khá thú vị là [Random Cut Forrest cho Anomaly Detection](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html). RCF đã được đăng trên ICML2016 và Amazon có vẻ khá tự hào về thằng này nên đã tích hợp luôn vào hệ thống. RCF cũng xuất hiện trong một vài câu hỏi trong bài thi. Để hiểu thêm về thuật toán này các bạn tham khảo thêm ở video trong aws.training: https://www.aws.training/learningobject/video?id=27226
 
 
-Trước khi thi mình cũng có nghe nhiều về SageMaker nhưng việc áp dụng vào công ty mình thì mình thấy khá xa vời nên không tìm hiểu kỹ lắm. Chẳng hạn mình không đồng tình lắm với việc train trên jupyter notebook rồi đưa lên production luôn. Mình có xu hướng chuyển thành python script, chia class, viết test, thêm log nếu cần thiết rồi mới cho lên production. Đọc SageMaker guide thì thấy nó cũng support việc train mô hình bên ngoài rồi up lên SageMaker sau nhưng nếu làm vậy thì cho lên 1 con ECS bình thường vẫn nhanh hơn. Rất tiếc là dịp này chưa kịp trên tay SageMaker kỹ nhưng mình sẽ cố gắng tìm hiểu sâu hơn để có bài review chi tiết. 
+Trước khi thi mình cũng có nghe nhiều về SageMaker nhưng việc áp dụng vào công ty mình thì mình thấy khá xa vời nên không tìm hiểu kỹ lắm. Chẳng hạn mình không đồng tình lắm với việc train trên jupyter notebook rồi đưa lên production luôn. Mình có xu hướng chuyển thành python script, chia class, viết test, thêm log nếu cần thiết rồi mới cho lên production. Đọc SageMaker guide thì thấy nó cũng support việc train mô hình bên ngoài rồi up lên SageMaker sau nhưng nếu làm vậy thì cho lên 1 con ECS bình thường vẫn nhanh hơn. Rất tiếc là dịp này chưa kịp trên tay SageMaker kỹ nhưng mình sẽ cố gắng tìm hiểu sâu hơn để có bài review chi tiết.
 
-#### 3. Các dịch vụ liên quan đến dữ liệu 
+#### 3. Các dịch vụ liên quan đến dữ liệu
 ##### AWS Migration Tools
 
 * Data Migration Service
@@ -98,14 +99,14 @@ Trước khi thi mình cũng có nghe nhiều về SageMaker nhưng việc áp d
 
 3 dịch vụ này giúp chuyển dữ liệu từ on-primise hoặc AWS resource tới AWS resource khác. Nói thật là mình vẫn chưa hiểu Data Pipeline với Glue khác nhau thế nào nên cũng học vẹt để đi thi :(
 
- 
+
 ##### AWS Data helpers
 
 * Athena: giúp query SQL trên S3! (quá mạnh)
 * EMR (Elastic MapReduce): hadoop-like eco system
 * SageMaker Ground Truth:  dịch vụ để gắn nhãn cho dữ liệu
 
-#####  Streaming Data 
+#####  Streaming Data
 hay còn gọi là Kinesis Family
 
 - Kinesis Data Streams: xử lý dữ liệu stream. Có thể lưu dữ liệu trong 24h (up lên tới 7 ngày). Người dùng phải thiết lập các shard (tưởng tượng như stream là 1 đoàn tàu thì shard là toa tàu còn hành khách là dữ liệu).
