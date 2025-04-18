@@ -1,4 +1,4 @@
-baseURL = "https:/www.vanhuyz.com/"
+baseURL = "https:/www.vanhuyz.com"
 disablePathToLower = true
 languageCode = "en-us"
 title = "vanhuyz's notes"
