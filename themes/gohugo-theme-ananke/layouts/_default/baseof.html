@@ -70,7 +70,7 @@
   {{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
 </head>
 
-<body class="ma0 {{ $.Param " body_classes" | default "avenir bg-near-white" }}{{ with getenv "HUGO_ENV" }} {{ . }}{{
+<body class="ma0 {{ $.Param " body_classes" | default "helvetica bg-near-white" }}{{ with getenv "HUGO_ENV" }} {{ . }}{{
   end }}">
 
   {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
