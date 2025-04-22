@@ -7,7 +7,7 @@
 {{ $section := .Site.GetPage "section" .Section }}
 <article class="flex-l flex-wrap justify-between mw8 center ph3">
   <header class="mt4 w-100">
-    <aside class="instapaper_ignoref b helvetica tracked">
+    <aside class="instapaper_ignoref b sans-serif tracked">
       {{/*
       CurrentSection allows us to use the section title instead of inferring from the folder.
       https://gohugo.io/variables/page/#section-variables-and-methods
@@ -46,7 +46,7 @@
     <span class="f6 mv4 dib tracked"> - {{ .WordCount}} words</span>
     {{ end }}
   </header>
-  <div class="nested-copy-line-height lh-copy {{ $.Param " post_content_classes" | default "helvetica" }} f4
+  <div class="nested-copy-line-height lh-copy {{ $.Param " post_content_classes" | default "sans-serif" }} f4
     nested-links nested-img mid-gray pr4-l w-two-thirds-l">
     {{- .Content -}}
     {{- partial "tags.html" . -}}
