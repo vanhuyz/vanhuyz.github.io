@@ -12,7 +12,7 @@ Bạn đã bao giờ tự hỏi:
 
 > “Mình nên giỏi thật sâu một kỹ năng, hay biết nhiều thứ một chút?”
 
-Câu hỏi đó ám ảnh tôi suốt những năm đầu làm AI engineer – và tôi tìm thấy câu trả lời khi biết đến T-shaped skills.
+Câu hỏi đó ám ảnh tôi suốt những năm đầu làm engineer – và tôi tìm thấy câu trả lời khi biết đến T-shaped skills.
 
 🔍 T-shaped là gì?
 T-shaped skills mô tả một kiểu năng lực lý tưởng trong công việc hiện đại:
